@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <!-- 모바일 반응형을 위한 필수 태그 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>어디아파 🐾</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===== 화면(섹션) 영역 ===== -->
+  <main>
+
+    <!-- 섹션 1: 홈 (처음에 보이는 화면) -->
+    <section id="home" class="page active">
+      <h1>🐾 어디아파</h1>
+      <p>우리 아이가 아파요. 어떻게 해야 할까요?</p>
+      <p>증상을 입력하면 AI가 응급도를 알려드려요.</p>
+      <button class="btn-primary" data-goto="check">지금 체크하기 →</button>
+    </section>
+
+    <!-- 섹션 2: 증상 체크 (입력 + 결과) -->
+    <section id="check" class="page">
+      <h2>증상 체크</h2>
+
+      <!-- 입력 폼 -->
+      <form id="check-form">
+        <label>동물 종류
+          <select id="animal">
+            <option value="">선택하세요</option>
+            <option value="강아지">강아지</option>
+            <option value="고양이">고양이</option>
+            <option value="기타">기타</option>
+          </select>
+        </label>
+
+        <label>나이
+          <input type="text" id="age" placeholder="예: 2살" />
+        </label>
+
+        <label>증상
+          <textarea id="symptom" placeholder="예: 어제부터 밥을 안 먹고 토해요"></textarea>
+        </label>
+
+        <label>지속 기간
+          <input type="text" id="duration" placeholder="예: 3일째" />
+        </label>
+
+        <button type="submit" class="btn-primary">AI 응급도 확인</button>
+      </form>
+
+      <!-- 결과 표시 영역 (처음엔 비어있음) -->
+      <div id="result"></div>
+    </section>
+
+    <!-- 섹션 3: FAQ -->
+    <section id="faq" class="page">
+      <h2>자주 묻는 질문</h2>
+      <div class="faq-item">
+        <h3>Q. 이 서비스가 진단을 해주나요?</h3>
+        <p>A. 아니요. 응급도 참고용이며, 정확한 진단은 반드시 수의사에게 받으세요.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Q. 결과를 믿어도 되나요?</h3>
+        <p>A. AI 참고 정보입니다. 위급해 보이면 즉시 병원에 가세요.</p>
+      </div>
+      <p class="disclaimer">⚠️ 본 서비스는 참고용이며 수의사의 진단을 대체하지 않습니다.</p>
+    </section>
+
+  </main>
+
+  <!-- ===== 하단 메뉴바 ===== -->
+  <nav class="bottom-nav">
+    <button data-goto="home">🏠 홈</button>
+    <button data-goto="check">🩺 체크</button>
+    <button data-goto="faq">❓ FAQ</button>
+  </nav>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
