@@ -45,7 +45,7 @@ class handler(BaseHTTPRequestHandler):
             # 4. OpenAI API 호출
             client = OpenAI(api_key=os.environ.get('OPENAI_API_KEY'))
             response = client.chat.completions.create(
-                model="GPT-5 Mini",  
+                model="gpt-5.4-mini",  
                 messages=[
                     {"role": "user", "content": prompt}
                 ],
