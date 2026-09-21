@@ -7,5 +7,3 @@ dependencies = [
     "python-dotenv"
 ]
 
-[tool.vercel]
-entrypoint = "api.check:handler"
