@@ -1,0 +1,13 @@
+{
+  "builds": [
+    { "src": "index.html", "use": "@vercel/static" },
+    { "src": "css/**", "use": "@vercel/static" },
+    { "src": "js/**", "use": "@vercel/static" },
+    { "src": "api/check.py", "use": "@vercel/python" }
+  ],
+  "routes": [
+    { "src": "/api/check", "dest": "/api/check.py" },
+    { "src": "/", "dest": "/index.html" },
+    { "src": "/(.*)", "dest": "/$1" }
+  ]
+}

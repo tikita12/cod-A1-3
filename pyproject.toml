@@ -6,4 +6,3 @@ dependencies = [
     "openai",
     "python-dotenv"
 ]
-
