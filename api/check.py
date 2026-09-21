@@ -6,6 +6,9 @@ from openai import OpenAI
 # Vercel Python 함수는 BaseHTTPRequestHandler를 상속한 handler 클래스가 필요
 class handler(BaseHTTPRequestHandler):
 
+    def do_GET(self):
+     self.send_json(200, {"status": "ok"})
+
     def do_POST(self): #프론트가 POST로 보낸 요청을 처리
         try:
             # 1. 프론트에서 보낸 데이터 읽기
@@ -45,7 +48,7 @@ class handler(BaseHTTPRequestHandler):
             # 4. OpenAI API 호출
             client = OpenAI(api_key=os.environ.get('OPENAI_API_KEY'))
             response = client.chat.completions.create(
-                model="gpt-5.4-mini",  
+                model="gpt-5-mini",  
                 messages=[
                     {"role": "user", "content": prompt}
                 ],
