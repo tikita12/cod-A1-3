@@ -2,6 +2,8 @@ from http.server import BaseHTTPRequestHandler
 import json
 import os
 from openai import OpenAI
+from dotenv import load_dotenv
+load_dotenv()  # ← .env 파일 읽어오기!
 
 # Vercel Python 함수는 BaseHTTPRequestHandler를 상속한 handler 클래스가 필요
 class handler(BaseHTTPRequestHandler):
