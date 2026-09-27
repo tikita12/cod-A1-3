@@ -1,7 +1,6 @@
 from http.server import BaseHTTPRequestHandler
 import json
 import os
-import requests
 from openai import OpenAI
 from dotenv import load_dotenv
 load_dotenv()  # ← .env 파일 읽어오기!
