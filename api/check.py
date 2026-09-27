@@ -56,15 +56,21 @@ class handler(BaseHTTPRequestHandler):
                 model="gpt-5-mini",  
                 messages=[
                     {"role": "user", "content": prompt}
-                ],
-                response_format={"type": "json_object"}  # JSON으로 답변 강제(파싱 용이)
+                ]
             )
 
-            # 5. AI 답변 파싱
-            ai_result = json.loads(response.choices[0].message.content)
 
-            # 6. 프론트로 결과 전송
-            self.send_json(200, ai_result)
+            # 5. AI 답변 파싱 (안전 버전)
+            content = response.choices[0].message.content.strip()
+
+            # ```json ... ``` 감싸기 제거
+            if content.startswith("```"):
+                content = content.split("```")[1]  # 코드블럭 안쪽만 추출
+                if content.startswith("json"):
+                    content = content[4:]  # "json" 글자 제거
+                content = content.strip()
+
+            ai_result = json.loads(content)
 
         except Exception as e:
             # API 오류 처리 (실패 처리 ②)
