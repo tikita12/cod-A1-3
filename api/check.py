@@ -48,9 +48,9 @@ class handler(BaseHTTPRequestHandler):
 }}"""
 
             # 4. OpenAI API 호출
-            client = OpenAI(api_key=os.environ.get('OPENAI_API_KEY'),
-                            base_url="https://copa.codyssey.kr/v1"
-                                  # ← 이 줄 추가! (학습 서버로 보내기))
+            client = OpenAI(
+                api_key=os.environ.get('OPENAI_API_KEY'),
+                base_url="https://copa.codyssey.kr/v1" # ← 이 줄 추가! (학습 서버로 보내기))
             )
             response = client.chat.completions.create(
                 model="gpt-5-mini",  
