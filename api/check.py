@@ -62,6 +62,7 @@ class handler(BaseHTTPRequestHandler):
 
             # 5. AI 답변 파싱 (안전 버전)
             content = response.choices[0].message.content.strip()
+            print("AI 원본 답변:", content)  # ← 이 줄 추가! 로그로 확인
 
             # ```json ... ``` 감싸기 제거
             if content.startswith("```"):
@@ -71,6 +72,9 @@ class handler(BaseHTTPRequestHandler):
                 content = content.strip()
 
             ai_result = json.loads(content)
+
+            # 6. 프론트로 결과 전송 ← 이 부분 추가!
+            self.send_json(200, ai_result)
 
         except Exception as e:
             # API 오류 처리 (실패 처리 ②)
