@@ -109,17 +109,18 @@
 ## 📁 5. 프로젝트 구조
 
 > 어디아파/
-├── index.html          # 전체 페이지 (모든 섹션 포함)
-├── css/
-│   └── style.css       # 스타일 (섹션 전환, 반응형, 결과 카드)
-├── js/
-│   └── main.js         # 프론트 로직 (섹션 전환 + fetch API 호출)
-├── api/
-│   └── check.py        # Vercel Serverless 함수
-├── .env                # API 키 (git 제외)
-├── .gitignore
-├── requirements.txt
-└── README.md
+> 
+├── index.html          # 전체 페이지 (모든 섹션 포함)  
+├── css/  
+│   └── style.css       # 스타일 (섹션 전환, 반응형, 결과 카드)  
+├── js/  
+│   └── main.js         # 프론트 로직 (섹션 전환 + fetch API 호출)  
+├── api/  
+│   └── check.py        # Vercel Serverless 함수  
+├── .env                # API 키 (git 제외  )
+├── .gitignore  
+├── requirements.txt  
+└── README.md  
 
 ## 🚀 6. 실행 및 배포 방법
 
