@@ -15,6 +15,10 @@
 |---------|--------|
 | ![desktop](./images/desktop.png) | ![mobile](./images/mobile.jpg) |
 
+| 대기 | 결과 |
+|---------|--------|
+| ![loading](./images/loading.png) | ![result](./images/result.png) |
+
 > 테스트 환경: Edge (windowsOS), Safari (iPhone 16, iOS 17)
 
 ### 서비스명
@@ -162,7 +166,7 @@
 │   └── check.py        # Vercel Serverless 함수  
 ├── .env                # API 키 (git 제외  )
 ├── .gitignore  
-├── requirements.txt  
+├── requirements.txt    # 설치할 패키지 목록
 └── README.md  
 
 > 요청흐름/
@@ -186,7 +190,7 @@ git clone https://github.com/[tikita12]/cod-A1-3.git
 cd cod-A1-3
 
 # 2. 패키지 설치
-pip install -r requirements.txt
+pip install -r requirements.txt   # 목록 보고 한 방에 다 설치!
 
 # 3. 환경변수 설정 (.env 파일 생성)
 OPENAI_API_KEY=본인_키_입력
