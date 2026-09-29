@@ -30,6 +30,17 @@ class handler(BaseHTTPRequestHandler):
                 })
                 return
 
+            # 2-1. 긴 입력 제한 (실패 처리 추가!)
+            MAX_LENGTH = 500
+            if len(symptom) > MAX_LENGTH:
+                self.send_json(400, {
+                    "error": "증상은 500자 이내로 입력해주세요."
+                })
+                return
+            if len(animal) > 50:
+                animal = animal[:50]
+
+
             # 3. OpenAI에 보낼 프롬프트 구성
             prompt = f"""너는 반려동물 응급도를 판단하는 도우미야.
 아래 정보를 보고 응급도를 판정해줘.
