@@ -47,7 +47,7 @@
 >    (페이지 새로고침 없이 하단 메뉴로 이동)
 
 ### 페이지 1: [Main]
->         🐾 어디아파
+>         🐾 어디아파  
 >        
 >   우리 아이가 아파요. 어떻게 해야 할까요?
 >   증상을 입력하면 AI가 응급도를 알려드려요
@@ -82,7 +82,7 @@
 > OpenAI + gpt-5-mini
 
 ### 입력
-> - 입력: 동물 종류(강아지/고양이/기타), 나이, 증상, 지속기간
+> 입력: 동물 종류(강아지/고양이/기타), 나이, 증상, 지속기간
 
 ### 출력 (응답 JSON 스키마)
 
@@ -105,8 +105,9 @@
 }
 ```
 
-```json
+
 **출력:**
+```json
 {
   "emergency_level": "🟡24시간 내",
   "checklist": ["물을 마시는지 확인", "구토물에 피가 있는지 확인", "기운이 있는지 관찰"],
@@ -165,13 +166,13 @@
 └── README.md  
 
 > 요청흐름/
-[사용자 입력]
-     ↓ (폼 제출)
-[main.js] --- fetch POST /api/check ---> [check.py]
-     ↑                                        ↓
-     |                              [OpenAI(Codyssey) 호출]
-     |                                        ↓
-[결과 카드 렌더링] <--- JSON 응답 --- [JSON 파싱 & 응답]
+[사용자 입력]  
+     ↓ (폼 제출)  
+[main.js] --- fetch POST /api/check ---> [check.py]  
+     ↑                                          ↓  
+     |                                [OpenAI(Codyssey) 호출]  
+     |                                          ↓  
+[결과 카드 렌더링] <--- JSON 응답 --- [JSON 파싱 & 응답]  
 
 ## 🚀 6. 실행 및 배포 방법
 
@@ -185,47 +186,48 @@ cd cod-A1-3
 pip install -r requirements.txt
 
 # 3. 환경변수 설정 (.env 파일 생성)
-# OPENAI_API_KEY=본인_키_입력
+OPENAI_API_KEY=본인_키_입력
 
 # 4. Vercel 로컬 서버 실행
 vercel dev
 
 ### 배포
-GitHub에 push → Vercel이 자동 배포
-환경변수 OPENAI_API_KEY는 Vercel 대시보드 > Settings > Environment Variables에 등록
+GitHub에 push → Vercel이 자동 배포  
+환경변수 OPENAI_API_KEY는 Vercel 대시보드 > Settings >   Environment Variables에 등록
 
 ## 🔐 7. 보안 & 환경변수 정책
--왜 환경변수를 사용하나?
-보안: API 키를 코드에 직접 쓰면 GitHub 공개 시 유출 → 요금 폭탄/오남용 위험  
-운영 편의: 키 변경 시 코드 수정 없이 환경변수만 교체  
-환경 분리: 로컬(.env)과 배포(Vercel 환경변수)를 분리 관리    
+-왜 환경변수를 사용하나?  
+> 보안: API 키를 코드에 직접 쓰면 GitHub 공개 시 유출 → 요금 폭탄/오남용 위험  
+> 운영 편의: 키 변경 시 코드 수정 없이 환경변수만 교체  
+> 환경 분리: 로컬(.env)과 배포(Vercel 환경변수)를 분리 관리    
 
--키 유출 시 대응 절차
-OpenAI/Codyssey 대시보드에서 해당 키 즉시 폐기(revoke)  
-새 키 발급 후 Vercel 환경변수 교체  
-.gitignore에 .env 등록 확인  
-이미 커밋됐다면 git rm --cached .env 후 재푸시  
+-키 유출 시 대응 절차  
+> OpenAI/Codyssey 대시보드에서 해당 키 즉시 폐기(revoke)  
+> 새 키 발급 후 Vercel 환경변수 교체  
+> .gitignore에 .env 등록 확인  
+> 이미 커밋됐다면 git rm --cached .env 후 재푸시  
 
 ## 🐛 8. 장애 대응 & 재배포 절차
--문제 발생 시: Vercel 로그 확인: 대시보드 > 프로젝트 > Logs (또는 Functions 탭)  
-print("에러:", ...) 출력으로 원인 파악  
-로컬에서 vercel dev로 재현 & 수정  
-git commit → git push → Vercel 자동 재배포  
-배포 완료(Status: Ready) 후 실제 URL에서 재확인  
+-문제 발생 시: 
+> Vercel 로그 확인: 대시보드 > 프로젝트 > Logs (또는 Functions 탭)  
+> print("에러:", ...) 출력으로 원인 파악  
+> 로컬에서 vercel dev로 재현 & 수정  
+> git commit → git push → Vercel 자동 재배포  
+> 배포 완료(Status: Ready) 후 실제 URL에서 재확인  
 
-Vercel 로그 확인: 대시보드 > 프로젝트 > Logs (또는 Functions 탭)  
-print("에러:", ...) 출력으로 원인 파악  
-로컬에서 vercel dev로 재현 & 수정  
-git commit → git push → Vercel 자동 재배포  
-배포 완료(Status: Ready) 후 실제 URL에서 재확인  
+>Vercel 로그 확인: 대시보드 > 프로젝트 > Logs (또는 Functions 탭)  
+>print("에러:", ...) 출력으로 원인 파악  
+>로컬에서 vercel dev로 재현 & 수정  
+>git commit → git push → Vercel 자동 재배포  
+>배포 완료(Status: Ready) 후 실제 URL에서 재확인  
 
 ## 🚀 9. 향후 개선 & 확장 계획
 -응답 지연 개선  
-자주 묻는 증상은 캐시 활용 검토  
-간단한 판정은 경량 모델, 복잡한 경우만 상위 모델 사용  
-프롬프트 요약으로 토큰 절감  
+> 자주 묻는 증상은 캐시 활용 검토  
+> 간단한 판정은 경량 모델, 복잡한 경우만 상위 모델 사용  
+> 프롬프트 요약으로 토큰 절감  
 
 -기능 확장
-병원 찾기 (지역별 응급 동물병원 안내)  
-증상 히스토리 저장  
-사진 업로드 기반 판정  
+> 병원 찾기 (지역별 응급 동물병원 안내)  
+> 증상 히스토리 저장  
+> 사진 업로드 기반 판정  
