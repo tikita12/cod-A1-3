@@ -102,16 +102,18 @@
   "age": "3살",
   "symptom": "구토를 계속해요",
   "duration": "6시간"
-}```
-
+}
 ```
+
+```json
 **출력:**
 {
   "emergency_level": "🟡24시간 내",
   "checklist": ["물을 마시는지 확인", "구토물에 피가 있는지 확인", "기운이 있는지 관찰"],
   "warning_signs": ["구토물에 피가 섞임", "축 늘어져 반응 없음"],
   "disclaimer": "이 정보는 참고용이며 정확한 진단은 수의사에게 받으세요."
-}```
+}
+```
 
 
 ### 사용자에게 주는 가치
@@ -194,34 +196,36 @@ GitHub에 push → Vercel이 자동 배포
 
 ## 🔐 7. 보안 & 환경변수 정책
 -왜 환경변수를 사용하나?
-보안: API 키를 코드에 직접 쓰면 GitHub 공개 시 유출 → 요금 폭탄/오남용 위험
-운영 편의: 키 변경 시 코드 수정 없이 환경변수만 교체
-환경 분리: 로컬(.env)과 배포(Vercel 환경변수)를 분리 관리
-키 유출 시 대응 절차
--OpenAI/Codyssey 대시보드에서 해당 키 즉시 폐기(revoke)
-새 키 발급 후 Vercel 환경변수 교체
-.gitignore에 .env 등록 확인
-이미 커밋됐다면 git rm --cached .env 후 재푸시
+보안: API 키를 코드에 직접 쓰면 GitHub 공개 시 유출 → 요금 폭탄/오남용 위험  
+운영 편의: 키 변경 시 코드 수정 없이 환경변수만 교체  
+환경 분리: 로컬(.env)과 배포(Vercel 환경변수)를 분리 관리    
+
+-키 유출 시 대응 절차
+OpenAI/Codyssey 대시보드에서 해당 키 즉시 폐기(revoke)  
+새 키 발급 후 Vercel 환경변수 교체  
+.gitignore에 .env 등록 확인  
+이미 커밋됐다면 git rm --cached .env 후 재푸시  
 
 ## 🐛 8. 장애 대응 & 재배포 절차
--문제 발생 시: Vercel 로그 확인: 대시보드 > 프로젝트 > Logs (또는 Functions 탭)
-print("에러:", ...) 출력으로 원인 파악
-로컬에서 vercel dev로 재현 & 수정
-git commit → git push → Vercel 자동 재배포
-배포 완료(Status: Ready) 후 실제 URL에서 재확인
+-문제 발생 시: Vercel 로그 확인: 대시보드 > 프로젝트 > Logs (또는 Functions 탭)  
+print("에러:", ...) 출력으로 원인 파악  
+로컬에서 vercel dev로 재현 & 수정  
+git commit → git push → Vercel 자동 재배포  
+배포 완료(Status: Ready) 후 실제 URL에서 재확인  
 
-Vercel 로그 확인: 대시보드 > 프로젝트 > Logs (또는 Functions 탭)
-print("에러:", ...) 출력으로 원인 파악
-로컬에서 vercel dev로 재현 & 수정
-git commit → git push → Vercel 자동 재배포
-배포 완료(Status: Ready) 후 실제 URL에서 재확인
+Vercel 로그 확인: 대시보드 > 프로젝트 > Logs (또는 Functions 탭)  
+print("에러:", ...) 출력으로 원인 파악  
+로컬에서 vercel dev로 재현 & 수정  
+git commit → git push → Vercel 자동 재배포  
+배포 완료(Status: Ready) 후 실제 URL에서 재확인  
 
 ## 🚀 9. 향후 개선 & 확장 계획
--응답 지연 개선
-자주 묻는 증상은 캐시 활용 검토
-간단한 판정은 경량 모델, 복잡한 경우만 상위 모델 사용
-프롬프트 요약으로 토큰 절감
+-응답 지연 개선  
+자주 묻는 증상은 캐시 활용 검토  
+간단한 판정은 경량 모델, 복잡한 경우만 상위 모델 사용  
+프롬프트 요약으로 토큰 절감  
+
 -기능 확장
-병원 찾기 (지역별 응급 동물병원 안내)
-증상 히스토리 저장
-사진 업로드 기반 판정
+병원 찾기 (지역별 응급 동물병원 안내)  
+증상 히스토리 저장  
+사진 업로드 기반 판정  
