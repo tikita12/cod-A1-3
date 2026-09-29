@@ -139,13 +139,13 @@
 ### 프론트엔드
 > HTML / CSS / JavaScript (바닐라) — **React/Vue 금지**임을 명심!
 > - HTML : 뼈대
-> ````
+````
 <h1>어디아파 🐾</h1>          <!-- 큰 제목 -->
 <button>지금 체크하기</button>  <!-- 버튼 -->
 <input placeholder="증상 입력"> <!-- 입력칸 -->
 ````
 > - CSS : 꾸미기
-> ````
+````
 button {
     background-color: blue;   /* 버튼을 파란색으로 */
     color: white;             /* 글자는 흰색으로 */
@@ -176,17 +176,18 @@ button.onclick = function() {
 > Vercel Serverless Functions (Python, BaseHTTPRequestHandler) — api/ 폴더에 넣음
 
 >> **Serverless Function**  
->> ````
+````
 class handler(BaseHTTPRequestHandler):
     def do_POST(self):
         # 프론트에서 요청이 올 때만 이 함수가 실행
         # AI 물어보고 → 답 주고 → 사라짐 😴
 ````
 >> **엔드포인트란?**
->>| 엔드포인트(주소)     | 메서드 | 하는 일              | check.py 함수 |
+| 엔드포인트(주소)     | 메서드 | 하는 일              | check.py 함수 |
 |---------------------|--------|---------------------|---------------|
 | `/api/check`        | GET    | 서버 상태 확인 (헬스체크) | `do_GET`      |
 | `/api/check`        | POST   | 증상 받고 AI 응급도 판정   | `do_POST`     |
+
 ````
 def do_GET(self):    # /api/check로 GET 요청 오면
     self.send_json(200, {"status": "ok"})
