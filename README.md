@@ -45,7 +45,7 @@
 
 ---
 
-## 🎨 2. 페이지 구성 (최소 3개 이상 필수!)
+## 🎨 2. 페이지 구성
 
 > 💡 단일 페이지(index.html) 안에서 JavaScript로 섹션을 전환합니다.
 >    (페이지 새로고침 없이 하단 메뉴로 이동)
@@ -59,7 +59,7 @@
 >        [ 지금 체크하기 → ]
 
 ### 섹션 2: 증상 체크 (Check)
-> 증상 입력 폼(동물종류/나이/증상/지속기간)
+> 증상 입력 폼(동물종류/나이/증상/지속기간)  
 > → AI 응급도 판정 결과가 **같은 화면 하단**에 표시됨:
 >   1. 응급도 등급 (🔴즉시 / 🟡24시간내 / 🟢경과관찰)
 >   2. 병원 가기 전 체크리스트
@@ -124,7 +124,7 @@
 ### 사용자에게 주는 가치
 > 걱정되는데 검색 결과는 너무 많죠? 불안한 상황에서 명확한 다음 행동을 알려줍니다
 
-### 실패 처리 기준 (최소 1개 필수!)
+### 실패 처리 기준
 | 상황 | 처리 방식 | HTTP 상태 코드 |
 | :--- | :--- | :--- |
 | **빈 입력** (동물/증상 누락) | "동물 종류와 증상을 모두 입력해주세요" 메시지 반환 | `400` (Bad Request) |
@@ -175,14 +175,15 @@ button.onclick = function() {
 ### 백엔드
 > Vercel Serverless Functions (Python, BaseHTTPRequestHandler) — api/ 폴더에 넣음
 
->> **Serverless Function**  
+**Serverless Function**  
 ````
 class handler(BaseHTTPRequestHandler):
     def do_POST(self):
         # 프론트에서 요청이 올 때만 이 함수가 실행
         # AI 물어보고 → 답 주고 → 사라짐 😴
 ````
->> **엔드포인트란?**
+**엔드포인트란?**  
+
 | 엔드포인트(주소)     | 메서드 | 하는 일              | check.py 함수 |
 |---------------------|--------|---------------------|---------------|
 | `/api/check`        | GET    | 서버 상태 확인 (헬스체크) | `do_GET`      |
@@ -210,8 +211,8 @@ def do_POST(self):   # /api/check로 POST 요청 오면
 
 ## 📁 5. 프로젝트 구조
 
-> 어디아파/
-> 
+어디아파/
+
 ├── index.html          # 전체 페이지 (모든 섹션 포함)  
 ├── css/  
 │   └── style.css       # 스타일 (섹션 전환, 반응형, 결과 카드)  
@@ -224,7 +225,7 @@ def do_POST(self):   # /api/check로 POST 요청 오면
 ├── requirements.txt    # 설치할 패키지 목록
 └── README.md  
 
-> 요청흐름/
+요청흐름/
 
 ````
 [사용자 입력]  
@@ -289,8 +290,8 @@ OPENAI_API_KEY=본인_키_입력
 vercel dev
 
 ### 배포
-GitHub에 push → Vercel이 자동 배포  
-환경변수 OPENAI_API_KEY는 Vercel 대시보드 > Settings >   Environment Variables에 등록
+- GitHub에 push → Vercel이 자동 배포  
+- 환경변수 OPENAI_API_KEY는 Vercel 대시보드 > Settings >   Environment Variables에 등록
 
 ## 🔐 7. 보안 & 환경변수 정책
 -왜 환경변수를 사용하나?  
